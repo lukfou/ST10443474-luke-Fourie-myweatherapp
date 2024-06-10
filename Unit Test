@@ -1,0 +1,23 @@
+package com.example.myweatherapp
+
+import org.junit.Assert.assertEquals
+import org.junit.Test
+
+class MainDisplayActivityUnitTest {
+
+    @Test
+    fun testGetWeatherData() {
+        val mainDisplayActivity = MainDisplayActivity()
+        
+        assertEquals(WeatherData(13, 18, "Sunny"), mainDisplayActivity.getWeatherData("Monday"))
+        assertEquals(WeatherData(19, 23, "Partly Cloudy"), mainDisplayActivity.getWeatherData("Tuesday"))
+        assertEquals(WeatherData(16, 24, "Sunny"), mainDisplayActivity.getWeatherData("Wednesday"))
+        assertEquals(WeatherData(18, 21, "Cloudy"), mainDisplayActivity.getWeatherData("Thursday"))
+        assertEquals(WeatherData(13, 15, "Rain"), mainDisplayActivity.getWeatherData("Friday"))
+        assertEquals(WeatherData(23, 26, "Sunny"), mainDisplayActivity.getWeatherData("Saturday"))
+        assertEquals(WeatherData(27, 31, "Sunny"), mainDisplayActivity.getWeatherData("Sunday"))
+        
+        // Test for invalid day
+        assertEquals(WeatherData(0, 0, ""), mainDisplayActivity.getWeatherData("InvalidDay"))
+    }
+}
